@@ -19,6 +19,8 @@
 | Briefing emails sent | 4 |
 | Analysts with no assigned incidents (correctly not emailed) | 1 |
 
+See the correction record under "Audit notes" below: the four briefings were sent twice, and the later set is authoritative.
+
 ---
 
 ## Analyst recipients and incident counts
@@ -42,12 +44,22 @@
 
 ## Audit notes — one line per email sent
 
-1. `apmu558+lopez@expert.micro1.ai` | "Weekly Incident Briefing - Network and Connectivity - 2026-W32" | 1 incident | 2026-08-04T15:39:31+01:00
-2. `apmu558+Okafor@expert.micro1.ai` | "Weekly Incident Briefing - Application Services - 2026-W32" | 1 incident | 2026-08-04T15:40:38+01:00
-3. `apmu558+Chen@expert.micro1.ai` | "Weekly Incident Briefing - Database and Storage - 2026-W32" | 2 incidents | 2026-08-04T15:40:51+01:00
-4. `apmu558+Shah@expert.micro1.ai` | "Weekly Incident Briefing - Authentication and Identity - 2026-W32" | 1 incident | 2026-08-04T15:41:08+01:00
+Authoritative briefing send:
+
+1. `apmu558+lopez@expert.micro1.ai` | "Weekly Incident Briefing - Network and Connectivity - 2026-W32" | 1 incident | 2026-08-04T15:52:43+01:00
+2. `apmu558+Okafor@expert.micro1.ai` | "Weekly Incident Briefing - Application Services - 2026-W32" | 1 incident | 2026-08-04T15:52:57+01:00
+3. `apmu558+Chen@expert.micro1.ai` | "Weekly Incident Briefing - Database and Storage - 2026-W32" | 2 incidents | 2026-08-04T15:53:19+01:00
+4. `apmu558+Shah@expert.micro1.ai` | "Weekly Incident Briefing - Authentication and Identity - 2026-W32" | 1 incident | 2026-08-04T15:53:32+01:00
 
 All four emails were sent from apmu558@expert.micro1.ai and confirmed present in the Sent folder with the `SENT` label. Timestamps are Europe/London (BST, UTC+01:00).
+
+### Correction record
+
+An earlier send of these same four briefings went out at 15:39:31, 15:40:38, 15:40:51 and 15:41:08 (+01:00) to the same four recipients with the same subject lines and the same incident content. In those copies the visible source-reports URL had been replaced by a `www.google.com/url?q=...` redirect string, so the body did not present a github.com address as required. The four briefings were therefore re-sent with an explicit github.com anchor, and the copies listed above are the authoritative record for this pass. The superseded copies remain in the Sent folder; each re-sent briefing carries a one-line note telling the recipient it replaces the earlier copy.
+
+### Note on link handling
+
+This Workspace tenant rewrites the `href` target of every outbound link to a `www.google.com/url?q=...` safe-redirect; that behaviour is applied at send time and cannot be disabled from the client. In the authoritative copies the visible link text and the plain-text body both carry the literal URL `https://github.com/apmu558/weekly-infra-health-reports-2026/tree/main/reports/2026/`, and the redirect resolves to that folder.
 
 ---
 
@@ -97,4 +109,3 @@ All four emails were sent from apmu558@expert.micro1.ai and confirmed present in
 - Each subject line identified the message as a weekly incident briefing and named the analyst's specialty area.
 - Each email body carried a link to the `reports/2026/` folder of `apmu558/weekly-infra-health-reports-2026`, where the source weekly reports are stored.
 - Analysts with zero assigned incidents received no email.
-
